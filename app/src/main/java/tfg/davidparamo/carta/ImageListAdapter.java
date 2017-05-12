@@ -1,6 +1,7 @@
 package tfg.davidparamo.carta;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ public class ImageListAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, DetallePlato.class);
+                context.startActivity(intent);
             }
         });
         Picasso

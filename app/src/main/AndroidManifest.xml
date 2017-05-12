@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tfg.davidparamo.carta">
-
+    package="tfg.davidparamo.carta"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Include following permission if you load images from Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Include following permission if you want to cache images on SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-sdk tools:overrideLibrary="com.microsoft.windowsazure.mobileservices" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
