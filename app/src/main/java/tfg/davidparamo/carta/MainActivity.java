@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.setTabsFromPagerAdapter(adapter);
+
+
     }
 
     @Override

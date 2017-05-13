@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+
 public class DetallePlato extends AppCompatActivity {
 
     @Override
@@ -45,6 +46,7 @@ public class DetallePlato extends AppCompatActivity {
         int numero = Integer.parseInt(cantidadComida.getText().toString());
         TextView nombrePlato = (TextView) findViewById(R.id.nombrePlato);
         String nombre = nombrePlato.getText().toString();
-
+        Pedido pedido = new Pedido(4,nombre, numero);
+        AzureServiceAdapter.insertarPedido(pedido);
     }
 }

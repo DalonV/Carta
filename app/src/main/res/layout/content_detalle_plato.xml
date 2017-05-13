@@ -96,7 +96,7 @@
             android:clickable="true"
             app:backgroundTint="@android:color/holo_green_dark"
             app:fabSize="mini"
-            app:srcCompat="@drawable/checkButton" />
+            app:srcCompat="@drawable/checkbutton" />
     </LinearLayout>
 
 </RelativeLayout>

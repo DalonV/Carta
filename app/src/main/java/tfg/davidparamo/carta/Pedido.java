@@ -7,7 +7,13 @@ package tfg.davidparamo.carta;
 public class Pedido {
     private int numMesa;
     private String plato;
-    private Boolean cantidadPlato;
+    private int cantidadPlato;
+
+    public Pedido(int num, String nombre, int cantidad ) {
+        numMesa = num;
+        plato = nombre;
+        cantidadPlato = cantidad;
+    }
 
     public int getNumMesa() {
         return numMesa;
@@ -25,11 +31,11 @@ public class Pedido {
         this.plato = plato;
     }
 
-    public Boolean getCantidadPlato() {
+    public int getCantidadPlato() {
         return cantidadPlato;
     }
 
-    public void setCantidadPlato(Boolean cantidadPlato) {
+    public void setCantidadPlato(int cantidadPlato) {
         this.cantidadPlato = cantidadPlato;
     }
 }

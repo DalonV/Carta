@@ -7,6 +7,7 @@ package tfg.davidparamo.carta;
 
 import android.content.Context;
 import com.microsoft.windowsazure.mobileservices.*;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 
 public class AzureServiceAdapter {
     private String mMobileBackendUrl = "http://cartamoviltfg.azurewebsites.net";
@@ -41,5 +42,9 @@ public class AzureServiceAdapter {
             return mClient;
             }
 
-        // Place any public methods that operate on mClient here.
+    MobileServiceTable<Pedido> mToDoTable = mClient.getTable("Pedidos", Pedido.class);
+
+    public void insertarPedido (Pedido pedido){
+        mToDoTable.insert(pedido);
+    }
 }
