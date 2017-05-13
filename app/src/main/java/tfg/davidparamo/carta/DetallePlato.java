@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 public class DetallePlato extends AppCompatActivity {
 
@@ -27,4 +28,23 @@ public class DetallePlato extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    public void aumentarCantidad(View view){
+        TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
+        int numero = Integer.parseInt(cantidadComida.getText().toString());
+        cantidadComida.setText(Integer.toString(++numero));
+    }
+
+    public void disminuirCantidad(View view){
+        TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
+        int numero = Integer.parseInt(cantidadComida.getText().toString());
+        cantidadComida.setText(Integer.toString(--numero));
+    }
+
+    public void addPlato(View view){
+        TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
+        int numero = Integer.parseInt(cantidadComida.getText().toString());
+        TextView nombrePlato = (TextView) findViewById(R.id.nombrePlato);
+        String nombre = nombrePlato.getText().toString();
+
+    }
 }

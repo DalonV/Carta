@@ -42,4 +42,4 @@ public class AzureServiceAdapter {
             }
 
         // Place any public methods that operate on mClient here.
-        }
+}
