@@ -47,6 +47,6 @@ public class DetallePlato extends AppCompatActivity {
         TextView nombrePlato = (TextView) findViewById(R.id.nombrePlato);
         String nombre = nombrePlato.getText().toString();
         Pedido pedido = new Pedido(4,nombre, numero);
-        AzureServiceAdapter.insertarPedido(pedido);
+        AzureServiceAdapter.getInstance().insertarPedido(pedido);
     }
 }
