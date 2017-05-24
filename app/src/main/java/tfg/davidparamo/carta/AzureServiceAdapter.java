@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutionException;
 import static java.security.AccessController.getContext;
 
 public class AzureServiceAdapter {
-    private String mMobileBackendUrl = "http://cartamoviltfg.azurewebsites.net";
+    private String mMobileBackendUrl = "http://cartamovil.azurewebsites.net";
     private Context mContext;
     private MobileServiceClient mClient;
     private static AzureServiceAdapter mInstance = null;
