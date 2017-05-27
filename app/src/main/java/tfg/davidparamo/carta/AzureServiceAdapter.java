@@ -13,7 +13,10 @@ import android.widget.Toast;
 
 import com.microsoft.windowsazure.mobileservices.*;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+import com.microsoft.windowsazure.mobileservices.table.TableQueryCallback;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static java.security.AccessController.getContext;
@@ -69,5 +72,23 @@ public class AzureServiceAdapter {
         Intent intent = new Intent(mContext, DetallePlato.class);
         mContext.startActivity(intent);
         return actualizado;
+    }
+
+    public List<Plato> getPlatos(){
+        Log.d("1n ","dfvdfdfvdfvdfvfvdfvdfvd");
+        MobileServiceTable<Plato> mToDoTable = mClient.getTable("Platos", Plato.class);
+        Log.d("2n ","dfvdfdfvdfvdfvfvdfvdfvd");
+        try {
+            Log.d("3n ","dfvdfdfvdfvdfvfvdfvdfvd");
+           // Log.d("Es null?", mToDoTable.select().execute());
+            MobileServiceList<Plato> platos = mToDoTable.execute().get();
+
+            Log.d("4n ","dfvdfdfvdfvdfvfvdfvdfvd");
+            return platos;
+        } catch (Exception e) {
+            Log.d("Salta una excepcion ","dfvdfdfvdfvdfvfvdfvdfvd");
+        }
+
+        return null;
     }
 }

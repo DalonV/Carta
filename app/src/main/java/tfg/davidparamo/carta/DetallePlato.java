@@ -5,8 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.List;
 
 
 public class DetallePlato extends AppCompatActivity {
@@ -42,11 +45,18 @@ public class DetallePlato extends AppCompatActivity {
     }
 
     public void addPlato(View view){
+        Log.d("fgvgvgvgvg","dfvdfdfvdfvdfvfvdfvdfvd");
         TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
         int numero = Integer.parseInt(cantidadComida.getText().toString());
         TextView nombrePlato = (TextView) findViewById(R.id.nombrePlato);
         String nombre = nombrePlato.getText().toString();
         Pedido pedido = new Pedido(4,nombre, numero);
-        AzureServiceAdapter.getInstance().insertarPedido(pedido);
+       // AzureServiceAdapter.getInstance().insertarPedido(pedido);
+        Log.d("marramiau","dfvdfdfvdfvdfvfvdfvdfvd");
+        List<Plato> platos = AzureServiceAdapter.getInstance().getPlatos();
+        Log.d("Voy al lio","VOY AL LIOOOOOO");
+        for(Plato plato: platos){
+            Log.d("Plato",plato.toString());
+        }
     }
 }
