@@ -25,57 +25,110 @@
             android:id="@+id/nombrePlato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nombrePlato" />
+            android:layout_marginBottom="20px"
+            android:text="nombrePlato"
+            android:textSize="30sp" />
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/google"
-            android:id="@+id/imageView2" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imagenPlato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10px"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px"
+                app:srcCompat="@drawable/google" />
+
+            <TextView
+                android:id="@+id/precio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|right"
+                android:text="precio"
+                android:layout_alignBottom="@+id/imagenPlato" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10px"
+            android:paddingTop="10px">
 
-            <TextView
-                android:id="@+id/CantidadLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Cantidad" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/descripcionLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:text="Descripción" />
+
+                <TextView
+                    android:id="@+id/descripcionPlato"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20px"
+                    android:text="Descripción plato" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/masCantidad"
+                <TextView
+                    android:id="@+id/CantidadLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="aumentarCantidad"
-                    android:text="+" />
+                    android:gravity="center"
+                    android:text="Cantidad"
+                    android:textAlignment="center" />
 
-                <EditText
-                    android:id="@+id/cantidadPlato"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:editable="true"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:text="0" />
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/menosCantidad"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="disminuirCantidad"
-                    android:text="-" />
+                    <Button
+                        android:id="@+id/masCantidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="aumentarCantidad"
+                        android:text="+" />
+
+                    <EditText
+                        android:id="@+id/cantidadPlato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/menosCantidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="disminuirCantidad"
+                        android:text="-" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -84,20 +137,11 @@
         <Button
             android:id="@+id/addPlato"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:onClick="addPlato"
             android:text="Añadir al pedido" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_dark"
-            android:clickable="true"
-            app:backgroundTint="@android:color/holo_green_dark"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/checkbutton" />
     </LinearLayout>
 
 </RelativeLayout>

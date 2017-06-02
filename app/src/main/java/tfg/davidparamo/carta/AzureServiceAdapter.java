@@ -7,10 +7,12 @@ package tfg.davidparamo.carta;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Debug;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.windowsazure.mobileservices.*;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.table.TableQueryCallback;
@@ -40,17 +42,15 @@ public class AzureServiceAdapter {
     public static void Initialize(Context context) {
             if (mInstance == null) {
             mInstance = new AzureServiceAdapter(context);
-            } else {
-            throw new IllegalStateException("AzureServiceAdapter is already initialized");
             }
-            }
+    }
 
     public static AzureServiceAdapter getInstance() {
             if (mInstance == null) {
             throw new IllegalStateException("AzureServiceAdapter is not initialized");
             }
             return mInstance;
-            }
+    }
 
     public MobileServiceClient getClient() {
             return mClient;
@@ -74,21 +74,23 @@ public class AzureServiceAdapter {
         return actualizado;
     }
 
-    public List<Plato> getPlatos(){
-        Log.d("1n ","dfvdfdfvdfvdfvfvdfvdfvd");
-        MobileServiceTable<Plato> mToDoTable = mClient.getTable("Platos", Plato.class);
-        Log.d("2n ","dfvdfdfvdfvdfvfvdfvdfvd");
-        try {
-            Log.d("3n ","dfvdfdfvdfvdfvfvdfvdfvd");
-           // Log.d("Es null?", mToDoTable.select().execute());
-            MobileServiceList<Plato> platos = mToDoTable.execute().get();
-
-            Log.d("4n ","dfvdfdfvdfvdfvfvdfvdfvd");
-            return platos;
-        } catch (Exception e) {
-            Log.d("Salta una excepcion ","dfvdfdfvdfvdfvfvdfvdfvd");
-        }
-
-        return null;
+    public void getPlatos(){
+        (new MyAsyncTask()).execute();
     }
+
+    private class MyAsyncTask extends AsyncTask<Void,Void,Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            MobileServiceTable<Plato> mToDoTable = mClient.getTable("Platos", Plato.class);
+            try {
+                GlobalSettings.platos = mToDoTable.execute().get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("Salta una excepcion ","en getPlatos");
+            }
+            return null;
+        }
+    }
+
 }

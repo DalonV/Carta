@@ -13,14 +13,14 @@ public class Plato {
     public final void setId(String id) { mId = id; }
 
     @com.google.gson.annotations.SerializedName("createdAt")
-    private DateTimeOffset mCreatedAt;
-    public DateTimeOffset getCreatedAt() { return mCreatedAt; }
-    protected void setCreatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
+    private String mCreatedAt;
+    public String getCreatedAt() { return mCreatedAt; }
+    protected void setCreatedAt(String createdAt) { mCreatedAt = createdAt; }
 
     @com.google.gson.annotations.SerializedName("updatedAt")
-    private DateTimeOffset mUpdatedAt;
-    public DateTimeOffset getUpdatedAt() { return mUpdatedAt; }
-    protected void setUpdatedAt(DateTimeOffset updatedAt) { mUpdatedAt = updatedAt; }
+    private String mUpdatedAt;
+    public String getUpdatedAt() { return mUpdatedAt; }
+    protected void setUpdatedAt(String updatedAt) { mUpdatedAt = updatedAt; }
 
     @com.google.gson.annotations.SerializedName("version")
     private String mVersion;
@@ -55,11 +55,11 @@ public class Plato {
     }
 
     @com.google.gson.annotations.SerializedName("precio")
-    private double precio;
-    public double getPrecio() {
+    private String precio;
+    public String getPrecio() {
         return precio;
     }
-    public void setPrecio(double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
@@ -73,7 +73,7 @@ public class Plato {
     }
 
 
-    public Plato(String nombre, String ingre, String descri, double precio, String tipoPlato ) {
+    public Plato(String nombre, String ingre, String descri, String precio, String tipoPlato ) {
         this.setNombre(nombre);
         this.setIngredientes(ingre);
         this.setDescripcion(descri);
@@ -83,6 +83,6 @@ public class Plato {
 
     @Override
     public String toString() {
-        return (nombre+ingredientes+descripcion);
+        return (nombre+" "+ingredientes+ " " +descripcion);
     }
 }

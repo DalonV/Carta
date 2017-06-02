@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity
 
         tabLayout.setTabsFromPagerAdapter(adapter);
         AzureServiceAdapter.Initialize(this);
+        AzureServiceAdapter.getInstance().getPlatos();
 
     }
 

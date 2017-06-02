@@ -1,5 +1,6 @@
 package tfg.davidparamo.carta;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,7 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.common.util.concurrent.ListenableFuture;
+import com.microsoft.windowsazure.mobileservices.MobileServiceList;
+
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class DetallePlato extends AppCompatActivity {
@@ -20,15 +25,7 @@ public class DetallePlato extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_plato);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setInterface();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -52,11 +49,17 @@ public class DetallePlato extends AppCompatActivity {
         String nombre = nombrePlato.getText().toString();
         Pedido pedido = new Pedido(4,nombre, numero);
        // AzureServiceAdapter.getInstance().insertarPedido(pedido);
-        Log.d("marramiau","dfvdfdfvdfvdfvfvdfvdfvd");
-        List<Plato> platos = AzureServiceAdapter.getInstance().getPlatos();
-        Log.d("Voy al lio","VOY AL LIOOOOOO");
-        for(Plato plato: platos){
-            Log.d("Plato",plato.toString());
-        }
+
     }
+
+    private void setInterface(){
+        Plato plato = GlobalSettings.platoActual;
+        TextView nombre = (TextView) findViewById(R.id.nombrePlato);
+        nombre.setText(plato.getNombre());
+        TextView precio = (TextView) findViewById(R.id.precio);
+        precio.setText(plato.getPrecio());
+        TextView descripcion = (TextView) findViewById(R.id.descripcionPlato);
+        descripcion.setText(plato.getDescripcion());
+    }
+
 }

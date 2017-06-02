@@ -42,6 +42,8 @@ public class ImageListAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
+                Plato primero = GlobalSettings.platos.get(0);
+                GlobalSettings.platoActual = primero;
                 Intent intent = new Intent(context, DetallePlato.class);
                 context.startActivity(intent);
             }
