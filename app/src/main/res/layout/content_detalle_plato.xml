@@ -48,9 +48,13 @@
                 android:id="@+id/precio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imagenPlato"
                 android:gravity="bottom|right"
                 android:text="precio"
-                android:layout_alignBottom="@+id/imagenPlato" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="36sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <LinearLayout

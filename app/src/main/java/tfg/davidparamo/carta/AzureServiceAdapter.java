@@ -18,6 +18,7 @@ import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.table.TableQueryCallback;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -74,23 +75,6 @@ public class AzureServiceAdapter {
         return actualizado;
     }
 
-    public void getPlatos(){
-        (new MyAsyncTask()).execute();
-    }
 
-    private class MyAsyncTask extends AsyncTask<Void,Void,Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            MobileServiceTable<Plato> mToDoTable = mClient.getTable("Platos", Plato.class);
-            try {
-                GlobalSettings.platos = mToDoTable.execute().get();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.d("Salta una excepcion ","en getPlatos");
-            }
-            return null;
-        }
-    }
 
 }

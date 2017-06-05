@@ -8,5 +8,6 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 
 public class GlobalSettings {
     public static MobileServiceList<Plato> platos;
+    public static MobileServiceList<Pedido> pedidoActual;
     public static Plato platoActual;
 }

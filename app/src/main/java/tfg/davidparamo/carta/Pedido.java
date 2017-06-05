@@ -47,6 +47,15 @@ public class Pedido {
         this.plato = plato;
     }
 
+    @com.google.gson.annotations.SerializedName("precio")
+    private String precio;
+    public String getPrecio() {
+        return precio;
+    }
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
     @com.google.gson.annotations.SerializedName("cantidad")
     private int cantidadPlato;
     public int getCantidadPlato() {
@@ -56,9 +65,10 @@ public class Pedido {
         this.cantidadPlato = cantidadPlato;
     }
 
-    public Pedido(int num, String nombre, int cantidad ) {
+    public Pedido(int num, String nombre, int cantidad, String precio) {
         this.setCantidadPlato(cantidad);
         this.setPlato(nombre);
         this.setNumMesa(num);
+        this.setPrecio(precio);
     }
 }

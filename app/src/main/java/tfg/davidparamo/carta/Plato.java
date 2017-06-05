@@ -72,13 +72,23 @@ public class Plato {
         this.tipoPlato = tipoPlato;
     }
 
+    @com.google.gson.annotations.SerializedName("imageUrl")
+    private String imageUrl;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-    public Plato(String nombre, String ingre, String descri, String precio, String tipoPlato ) {
+
+    public Plato(String nombre, String ingre, String descri, String precio, String tipoPlato, String imageUrl ) {
         this.setNombre(nombre);
         this.setIngredientes(ingre);
         this.setDescripcion(descri);
         this.setPrecio(precio);
         this.setTipoPlato(tipoPlato);
+        this.setImageUrl(imageUrl);
     }
 
     @Override

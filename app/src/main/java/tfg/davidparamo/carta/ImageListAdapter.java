@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * Created by david on 26/03/2017.
  */
@@ -22,6 +24,7 @@ public class ImageListAdapter extends ArrayAdapter {
 
     private String[] imageUrls;
 
+
     public ImageListAdapter(Context context, String[] imageUrls) {
         super(context, R.layout.postreslayout, imageUrls);
 
@@ -32,7 +35,7 @@ public class ImageListAdapter extends ArrayAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (null == convertView) {
             convertView = inflater.inflate(R.layout.itemlayout, parent, false);
         }
@@ -42,8 +45,8 @@ public class ImageListAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
-                Plato primero = GlobalSettings.platos.get(0);
-                GlobalSettings.platoActual = primero;
+                Plato seleccionado = GlobalSettings.platos.get(position);
+                GlobalSettings.platoActual = seleccionado;
                 Intent intent = new Intent(context, DetallePlato.class);
                 context.startActivity(intent);
             }

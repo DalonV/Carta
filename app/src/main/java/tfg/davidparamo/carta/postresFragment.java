@@ -28,24 +28,7 @@ public class postresFragment extends Fragment {
     }
 
     List<Item> lista = new ArrayList<>();
-
-    public static String[] eatFoodyImages = {
-            "http://i.imgur.com/rFLNqWI.jpg",
-            "http://i.imgur.com/C9pBVt7.jpg",
-            "http://i.imgur.com/rT5vXE1.jpg",
-            "http://i.imgur.com/aIy5R2k.jpg",
-            "http://i.imgur.com/MoJs9pT.jpg",
-            "http://i.imgur.com/S963yEM.jpg",
-            "http://i.imgur.com/rLR2cyc.jpg",
-            "http://i.imgur.com/SEPdUIx.jpg",
-            "http://i.imgur.com/aC9OjaM.jpg",
-            "http://i.imgur.com/76Jfv9b.jpg",
-            "http://i.imgur.com/fUX7EIB.jpg",
-            "http://i.imgur.com/syELajx.jpg",
-            "http://i.imgur.com/COzBnru.jpg",
-            "http://i.imgur.com/Z3QjilA.jpg",
-    };
-
+    ArrayList<String> imageUrls = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,7 +42,16 @@ public class postresFragment extends Fragment {
         ItemAdapter adaptador = new ItemAdapter(getContext(),lista);
         GridView gridView = (GridView) view.findViewById(R.id.postresGrid);
         Log.d("MEEEEEEEH","MEEEEEEEEEEEEEEEEEH");
-        gridView.setAdapter(new ImageListAdapter(getContext(), eatFoodyImages));
+        for(Plato plato:GlobalSettings.platos){
+            if(plato.getTipoPlato().equals("Postre")) {
+                if (plato.getImageUrl() == null || plato.getImageUrl().isEmpty())
+                    imageUrls.add("http://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found.gif");
+                else imageUrls.add(plato.getImageUrl());
+            }
+        }
+        String[] imageArray = new String[imageUrls.size()];
+        imageArray = imageUrls.toArray(imageArray);
+        gridView.setAdapter(new ImageListAdapter(getContext(), imageArray));
 
 
         return view;

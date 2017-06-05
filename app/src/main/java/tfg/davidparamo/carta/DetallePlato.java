@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.windowsazure.mobileservices.MobileServiceList;
@@ -42,14 +43,13 @@ public class DetallePlato extends AppCompatActivity {
     }
 
     public void addPlato(View view){
-        Log.d("fgvgvgvgvg","dfvdfdfvdfvdfvfvdfvdfvd");
         TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
         int numero = Integer.parseInt(cantidadComida.getText().toString());
-        TextView nombrePlato = (TextView) findViewById(R.id.nombrePlato);
-        String nombre = nombrePlato.getText().toString();
-        Pedido pedido = new Pedido(4,nombre, numero);
-       // AzureServiceAdapter.getInstance().insertarPedido(pedido);
-
+        String nombre = GlobalSettings.platoActual.getNombre();
+        String precio = GlobalSettings.platoActual.getPrecio();
+        Pedido pedido = new Pedido(4,nombre, numero, precio);
+        GlobalSettings.pedidoActual.add(pedido);
+        Toast.makeText(this, "Se ha agregado el plato al pedido", Toast.LENGTH_SHORT).show();
     }
 
     private void setInterface(){
