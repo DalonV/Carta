@@ -15,14 +15,14 @@ public class Pedido {
     public final void setId(String id) { mId = id; }
 
     @com.google.gson.annotations.SerializedName("createdAt")
-    private DateTimeOffset mCreatedAt;
-    public DateTimeOffset getCreatedAt() { return mCreatedAt; }
-    protected void setCreatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
+    private String mCreatedAt;
+    public String getCreatedAt() { return mCreatedAt; }
+    protected void setCreatedAt(String createdAt) { mCreatedAt = createdAt; }
 
     @com.google.gson.annotations.SerializedName("updatedAt")
-    private DateTimeOffset mUpdatedAt;
-    public DateTimeOffset getUpdatedAt() { return mUpdatedAt; }
-    protected void setUpdatedAt(DateTimeOffset updatedAt) { mUpdatedAt = updatedAt; }
+    private String mUpdatedAt;
+    public String getUpdatedAt() { return mUpdatedAt; }
+    protected void setUpdatedAt(String updatedAt) { mUpdatedAt = updatedAt; }
 
     @com.google.gson.annotations.SerializedName("version")
     private String mVersion;
@@ -65,10 +65,20 @@ public class Pedido {
         this.cantidadPlato = cantidadPlato;
     }
 
+    @com.google.gson.annotations.SerializedName("preparado")
+    private boolean preparado;
+    public boolean getPreparado() {
+        return preparado;
+    }
+    public void setPreparado(boolean preparado) {
+        this.preparado = preparado;
+    }
+
     public Pedido(int num, String nombre, int cantidad, String precio) {
         this.setCantidadPlato(cantidad);
         this.setPlato(nombre);
         this.setNumMesa(num);
         this.setPrecio(precio);
+        preparado = false;
     }
 }

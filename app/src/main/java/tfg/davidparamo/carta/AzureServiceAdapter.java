@@ -59,22 +59,28 @@ public class AzureServiceAdapter {
 
 
 
-    public Pedido insertarPedido (Pedido pedido){
-        Log.d("MIIIIIIIIIIIIIIIIIII", Boolean.toString(pedido == null));
-        MobileServiceTable<Pedido> mToDoTable = mClient.getTable("Pedidos", Pedido.class);
-
-        Pedido actualizado = null;
-        try {
-            actualizado = mToDoTable.insert(pedido).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Toast.makeText(mContext,"Me han pulsado",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(mContext, DetallePlato.class);
-        mContext.startActivity(intent);
-        return actualizado;
+    public void insertarPedido (List<Pedido> pedido){
+        Log.d("Me quedo en","insertar pedido");
+        new MyAsyncTask().execute(pedido);
     }
 
+    private class MyAsyncTask extends AsyncTask<List<Pedido>,Void,Void>{
 
+        @Override
+        protected Void doInBackground(List<Pedido>... pedido) {
+            Log.d("MIIIIIIIIIIIIIIIIIII", Boolean.toString(pedido == null));
+            Log.d("longitud lista", pedido[0].size() + "");
+            MobileServiceTable<Pedido> mToDoTable = mClient.getTable("Pedidos", Pedido.class);
+            try {
+                for(Pedido ped: pedido[0])
+                    mToDoTable.insert(ped).get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Log.d("PEDIDO INSERTADO","PEDIDO INSERTADO");
+            GlobalSettings.pedidoActual.clear();
+            return null;
+        }
+    }
 
 }

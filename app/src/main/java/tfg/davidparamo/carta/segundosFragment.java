@@ -40,8 +40,8 @@ public class segundosFragment extends Fragment {
         for(Plato plato:GlobalSettings.platos){
             if(plato.getTipoPlato().equals("Segundo")) {
                 if (plato.getImageUrl() == null || plato.getImageUrl().isEmpty())
-                    imageUrls.add("http://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found.gif");
-                else imageUrls.add(plato.getImageUrl());
+                    plato.setImageUrl("http://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found.gif");
+                imageUrls.add(plato.getImageUrl());
             }
         }
         String[] imageArray = new String[imageUrls.size()];

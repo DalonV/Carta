@@ -17,6 +17,8 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import static tfg.davidparamo.carta.GlobalSettings.platosDelPedido;
+
 
 public class DetallePlato extends AppCompatActivity {
 
@@ -45,10 +47,12 @@ public class DetallePlato extends AppCompatActivity {
     public void addPlato(View view){
         TextView cantidadComida = (TextView) findViewById(R.id.cantidadPlato);
         int numero = Integer.parseInt(cantidadComida.getText().toString());
-        String nombre = GlobalSettings.platoActual.getNombre();
-        String precio = GlobalSettings.platoActual.getPrecio();
-        Pedido pedido = new Pedido(4,nombre, numero, precio);
+        Plato platoActual = GlobalSettings.platoActual;
+        String nombre = platoActual.getNombre();
+        String precio = platoActual.getPrecio();
+        Pedido pedido = new Pedido(2,nombre, numero, precio);
         GlobalSettings.pedidoActual.add(pedido);
+        platosDelPedido.put(platoActual.getNombre(),platoActual);
         Toast.makeText(this, "Se ha agregado el plato al pedido", Toast.LENGTH_SHORT).show();
     }
 
