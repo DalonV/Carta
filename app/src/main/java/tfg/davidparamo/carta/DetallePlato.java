@@ -63,10 +63,9 @@ public class DetallePlato extends AppCompatActivity {
 
     private void setInterface(){
         Plato plato = GlobalSettings.platoActual;
-        TextView nombre = (TextView) findViewById(R.id.nombrePlato);
-        nombre.setText(plato.getNombre());
+        setTitle(plato.getNombre());
         TextView precio = (TextView) findViewById(R.id.precio);
-        precio.setText(plato.getPrecio());
+        precio.setText(plato.getPrecio() + " €");
         TextView descripcion = (TextView) findViewById(R.id.descripcionPlato);
         descripcion.setText(plato.getDescripcion());
         ImageView imagen = (ImageView) findViewById(R.id.imagenPlato);

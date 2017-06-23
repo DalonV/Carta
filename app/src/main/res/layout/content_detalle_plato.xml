@@ -21,14 +21,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:id="@+id/nombrePlato"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20px"
-            android:text="nombrePlato"
-            android:textSize="30sp" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -36,7 +28,7 @@
             <ImageView
                 android:id="@+id/imagenPlato"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginBottom="10px"
                 android:background="#000000"
                 android:paddingBottom="10px"
@@ -146,7 +138,7 @@
             android:id="@+id/addPlato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_gravity="bottom|end"
             android:onClick="addPlato"
             android:text="Añadir al pedido" />
 

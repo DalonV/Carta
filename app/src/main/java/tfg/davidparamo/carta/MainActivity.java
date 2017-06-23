@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,7 +20,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TabHost;
+
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,7 +54,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        ImageView image = (ImageView) findViewById(R.id.fondonavbar);
+        image.setImageResource(R.drawable.amazon);
+       /* Picasso.with(MainActivity.this).load("https://blobstfg.blob.core.windows.net/config/navImage")
+                .into(image, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d("BIEN","successfully load the image");
+                    }
 
+                    @Override
+                    public void onError() {
+                        Log.d("Mal","fail to load the image");
+                    }
+                });*/
 
         pager= (ViewPager) findViewById(R.id.viewpager);
         tabLayout= (TabLayout) findViewById(R.id.sliding_tabs);

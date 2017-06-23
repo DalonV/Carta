@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "tfg.davidparamo.carta"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         multiDexEnabled true
         versionCode 1
@@ -37,5 +37,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:10.2.4'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.koushikdutta.ion:ion:2.+'
     testCompile 'junit:junit:4.12'
 }
