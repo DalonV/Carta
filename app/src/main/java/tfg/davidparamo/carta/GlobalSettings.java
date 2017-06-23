@@ -10,8 +10,15 @@ import java.util.HashMap;
  */
 
 public class GlobalSettings {
+    public static float reciboTotal = 0.0f;
+
     public static MobileServiceList<Plato> platos;
+    public static ArrayList<Plato> platosPrimero = new ArrayList<>();
+    public static ArrayList<Plato> platosSegundo = new ArrayList<>();
+    public static ArrayList<Plato> platosPostre = new ArrayList<>();
+
     public static ArrayList<Pedido> pedidoActual = new ArrayList<>();
+    public static ArrayList<Pedido> recibo = new ArrayList<>();
     public static HashMap<String,Plato> platosDelPedido = new HashMap<>();
     public static Plato platoActual;
 }

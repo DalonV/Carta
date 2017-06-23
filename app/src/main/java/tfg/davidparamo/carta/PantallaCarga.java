@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 
 public class PantallaCarga extends AppCompatActivity {
@@ -30,7 +31,18 @@ public class PantallaCarga extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             MobileServiceTable<Plato> mToDoTable = AzureServiceAdapter.getInstance().getClient().getTable("Platos", Plato.class);
             try {
-                GlobalSettings.platos = mToDoTable.execute().get();
+                MobileServiceList<Plato>  platos = mToDoTable.execute().get();
+                for(Plato plato: platos){
+                    Log.d("QUE TIPO DE PLATO", plato.getTipoPlato());
+                    switch (plato.getTipoPlato()) {
+
+                        case "Primero": GlobalSettings.platosPrimero.add(plato); break;
+                        case "Segundo": GlobalSettings.platosSegundo.add(plato); break;
+                        case "Postre": GlobalSettings.platosPostre.add(plato); break;
+                    }
+
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.d("Salta una excepcion ","en getPlatos");
@@ -43,7 +55,10 @@ public class PantallaCarga extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             getApplicationContext().startActivity(intent);
+            finish();
+
         }
     }
 }

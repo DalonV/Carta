@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.microsoft.windowsazure.mobileservices.MobileServiceList;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -50,8 +53,10 @@ public class DetallePlato extends AppCompatActivity {
         Plato platoActual = GlobalSettings.platoActual;
         String nombre = platoActual.getNombre();
         String precio = platoActual.getPrecio();
+        GlobalSettings.reciboTotal += Float.parseFloat(precio)*numero;
         Pedido pedido = new Pedido(2,nombre, numero, precio);
         GlobalSettings.pedidoActual.add(pedido);
+        GlobalSettings.recibo.add(pedido);
         platosDelPedido.put(platoActual.getNombre(),platoActual);
         Toast.makeText(this, "Se ha agregado el plato al pedido", Toast.LENGTH_SHORT).show();
     }
@@ -64,6 +69,19 @@ public class DetallePlato extends AppCompatActivity {
         precio.setText(plato.getPrecio());
         TextView descripcion = (TextView) findViewById(R.id.descripcionPlato);
         descripcion.setText(plato.getDescripcion());
-    }
+        ImageView imagen = (ImageView) findViewById(R.id.imagenPlato);
+        Picasso.with(this).load(plato.getImageUrl())
+                .into(imagen, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d("BIEN","successfully load the image");
+                    }
+
+                    @Override
+                    public void onError() {
+                        Log.d("Mal","fail to load the image");
+                    }
+                });
+}
 
 }

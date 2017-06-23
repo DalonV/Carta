@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tfg.davidparamo.carta.Recibo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/listaRecibo"
+            android:layout_width="344dp"
+            android:layout_height="495dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/precioTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio Total"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

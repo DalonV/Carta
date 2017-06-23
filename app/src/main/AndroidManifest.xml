@@ -43,7 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResumenPedido"></activity>
+        <activity android:name=".ResumenPedido" />
+        <activity android:name=".Recibo"></activity>
     </application>
 
 </manifest>

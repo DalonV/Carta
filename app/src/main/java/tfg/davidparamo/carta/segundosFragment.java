@@ -37,16 +37,15 @@ public class segundosFragment extends Fragment {
         ItemAdapter adaptador = new ItemAdapter(getContext(),lista);
         GridView gridView = (GridView) view.findViewById(R.id.postresGrid);
         Log.d("MEEEEEEEH","MEEEEEEEEEEEEEEEEEH");
-        for(Plato plato:GlobalSettings.platos){
-            if(plato.getTipoPlato().equals("Segundo")) {
+        for(Plato plato:GlobalSettings.platosSegundo){
                 if (plato.getImageUrl() == null || plato.getImageUrl().isEmpty())
                     plato.setImageUrl("http://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found.gif");
                 imageUrls.add(plato.getImageUrl());
-            }
+
         }
         String[] imageArray = new String[imageUrls.size()];
         imageArray = imageUrls.toArray(imageArray);
-        gridView.setAdapter(new ImageListAdapter(getContext(), imageArray));
+        gridView.setAdapter(new ImageListAdapter(getContext(),getActivity(), imageArray, GlobalSettings.platosSegundo));
 
 
         return view;

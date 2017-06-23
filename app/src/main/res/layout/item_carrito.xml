@@ -69,7 +69,7 @@
                 android:id="@+id/eliminarCarrito"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/checkbutton" />
+                android:background="@drawable/delete" />
         </LinearLayout>
 
         <TextView

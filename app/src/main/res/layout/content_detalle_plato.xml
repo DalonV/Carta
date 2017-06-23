@@ -38,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10px"
+                android:background="#000000"
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
@@ -46,12 +47,15 @@
 
             <TextView
                 android:id="@+id/precio"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imagenPlato"
-                android:gravity="bottom|right"
+                android:layout_alignEnd="@id/imagenPlato"
+                android:layout_alignRight="@id/imagenPlato"
+                android:background="#CC000000"
+                android:gravity="end"
                 android:text="precio"
-                android:textAlignment="textEnd"
+                android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
                 android:textSize="36sp"
                 android:textStyle="bold" />

@@ -66,6 +66,7 @@ public class PlatoAdapter extends BaseAdapter {
         View v = convertView;
 
         if (convertView == null) {
+            Log.d("entro porque null", "pues eso");
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.item_carrito, null);
         }
@@ -86,6 +87,7 @@ public class PlatoAdapter extends BaseAdapter {
                 Pedido ped = items.get(position);
                 items.remove(position);
                 Toast.makeText(v.getContext(),"Plato eliminado",Toast.LENGTH_LONG).show();
+                GlobalSettings.reciboTotal -= ped.getCantidadPlato() * Float.parseFloat(ped.getPrecio());
                 GlobalSettings.platosDelPedido.remove(ped.getPlato());
                 notifyDataSetChanged();
 
