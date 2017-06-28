@@ -15,18 +15,15 @@
             android:icon="@drawable/postreimage"
             android:title="Postres" />
         <item
+            android:id="@+id/nav_cuenta"
+            android:icon="@drawable/cuenta"
+            android:title="Mi cuenta" />
+        <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />
     </group>
 
-    <item android:title="">
-        <menu>
-        <item
-            android:id="@+id/nav_cuenta"
-            android:icon="@drawable/cuenta"
-            android:title="Mi cuenta" />
-        </menu>
-    </item>
+
 
 </menu>

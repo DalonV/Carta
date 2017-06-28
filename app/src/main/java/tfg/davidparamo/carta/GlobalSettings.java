@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class GlobalSettings {
     public static float reciboTotal = 0.0f;
-
+    public static int numMesa = 3;
     public static MobileServiceList<Plato> platos;
     public static ArrayList<Plato> platosPrimero = new ArrayList<>();
     public static ArrayList<Plato> platosSegundo = new ArrayList<>();

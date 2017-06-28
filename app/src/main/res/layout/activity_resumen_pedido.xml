@@ -8,10 +8,8 @@
 
     <ListView
         android:id="@+id/listaResumen"
-        android:layout_width="344dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/confirmPedido"
@@ -23,7 +21,6 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:clickable="true"
-        app:backgroundTint="@android:color/holo_green_dark"
         app:fabSize="normal"
         app:srcCompat="@drawable/checkbutton" />
 </RelativeLayout>

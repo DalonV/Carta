@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        ImageView image = (ImageView) findViewById(R.id.fondonavbar);
-        image.setImageResource(R.drawable.amazon);
-       /* Picasso.with(MainActivity.this).load("https://blobstfg.blob.core.windows.net/config/navImage")
+        View nav = navigationView.getHeaderView(0);
+        ImageView image = (ImageView) nav.findViewById(R.id.fondonavbar);
+        Picasso.with(MainActivity.this).load("https://blobstfg.blob.core.windows.net/config/navImage")
                 .into(image, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
                     public void onError() {
                         Log.d("Mal","fail to load the image");
                     }
-                });*/
+                });
 
         pager= (ViewPager) findViewById(R.id.viewpager);
         tabLayout= (TabLayout) findViewById(R.id.sliding_tabs);

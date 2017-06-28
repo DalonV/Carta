@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,13 +74,15 @@ public class PlatoAdapter extends BaseAdapter {
         Pedido actual = items.get(position);
         Plato plato = GlobalSettings.platosDelPedido.get(actual.getPlato());
         TextView nombre = (TextView) v.findViewById(R.id.nombreCarrito);
-        nombre.setText(actual.getPlato());
+        String nombrePlato = actual.getPlato();
+        if(nombrePlato.length()>20) nombre.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        nombre.setText(nombrePlato);
         ImageView imagen = (ImageView) v.findViewById(R.id.imageCarrito);
         Log.d("URL DE LA IMAGEN",plato.getImageUrl());
         TextView precio = (TextView) v.findViewById(R.id.precioCarrito);
-        precio.setText(plato.getPrecio());
-        TextView cantidad = (TextView) v.findViewById(R.id.cantidadCarrito);
-        cantidad.setText(Integer.toString(actual.getCantidadPlato()));
+        precio.setText(plato.getPrecio()+ " €");
+        final TextView cantidadComida = (TextView) v.findViewById(R.id.cantidadCarrito);
+        cantidadComida.setText(Integer.toString(actual.getCantidadPlato()));
         Button eliminar = (Button) v.findViewById(R.id.eliminarCarrito);
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +100,6 @@ public class PlatoAdapter extends BaseAdapter {
         aumentarCantidad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView cantidadComida = (TextView) activity.findViewById(R.id.cantidadCarrito);
                 int numero = Integer.parseInt(cantidadComida.getText().toString());
                 cantidadComida.setText(Integer.toString(++numero));
             }
@@ -107,9 +109,8 @@ public class PlatoAdapter extends BaseAdapter {
         disminuirCantidad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView cantidadComida = (TextView) activity.findViewById(R.id.cantidadCarrito);
                 int numero = Integer.parseInt(cantidadComida.getText().toString());
-                cantidadComida.setText(Integer.toString(--numero));
+                if(numero>1) cantidadComida.setText(Integer.toString(--numero));
             }
         });
         Picasso.with(activity).load(plato.getImageUrl())
