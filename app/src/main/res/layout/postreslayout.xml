@@ -13,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:isScrollContainer="true"
+        android:stretchMode="columnWidth"
         android:numColumns="2">
 
     </GridView>

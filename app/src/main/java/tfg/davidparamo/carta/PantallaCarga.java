@@ -57,6 +57,7 @@ public class PantallaCarga extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             getApplicationContext().startActivity(intent);
+
             finish();
 
         }

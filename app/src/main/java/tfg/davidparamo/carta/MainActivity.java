@@ -2,6 +2,8 @@ package tfg.davidparamo.carta;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +12,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,11 +23,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import static tfg.davidparamo.carta.GlobalSettings.isSetNumMesa;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +44,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.setTabsFromPagerAdapter(adapter);
-
+        if(!isSetNumMesa) lanzarDialogo();
     }
 
 
@@ -129,6 +141,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, Recibo.class);
             this.startActivity(intent);
         }
+        else if(id == R.id.nav_manage){
+            lanzarDialogo();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -151,5 +166,29 @@ public class MainActivity extends AppCompatActivity
                         finish();
                     }
                 }).create().show();
+    }
+
+    public void lanzarDialogo() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Número de mesa");
+        builder.setMessage("Introduce el número de la mesa en la que estás sentado");
+
+        float dpi = getApplicationContext().getResources().getDisplayMetrics().density;
+        final EditText input = new EditText(this);
+        final FrameLayout frame = new FrameLayout(this);
+        frame.setPadding((int) (20 * dpi), 0, (int) (20 * dpi), 0);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+        frame.addView(input);
+        builder.setView(frame);
+
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GlobalSettings.numMesa = Integer.parseInt(input.getText().toString());
+                isSetNumMesa = true;
+            }
+        });
+
+        builder.show();
     }
 }
